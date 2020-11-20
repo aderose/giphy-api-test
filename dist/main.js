@@ -12,6 +12,6 @@
   \**********************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements:  */
-eval("\n\n//# sourceURL=webpack://api-test/./src/index.js?");
+eval("var img = document.querySelector('img');\nfetch('https://api.giphy.com/v1/gifs/translate?api_key=fj5ziE4ILPricdqb0WywRB5AbMGrVXLn&s=cats').then(function (response) {\n  return response.json();\n}).then(function (response) {\n  img.src = response.data.images.original.url;\n}).catch(function (e) {\n  console.log(e);\n});\n\n//# sourceURL=webpack://api-test/./src/index.js?");
 /******/ })()
 ;
