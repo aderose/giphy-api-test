@@ -3,10 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
     <title>Document</title>
   </head>
   <body>
-    <img src="#" alt="A random image" />
+    <header>
+      <h1>Random</h1>
+      <form>
+        <input type="text" name="search" id="search" autocomplete="off" />
+        <button type="submit" class="submit">
+          <i class="fas fa-check-circle"></i>
+        </button>
+      </form>
+    </header>
+    <main>
+      <div class="card">
+        <img src="#" alt="A random image" />
+        <button class="next" id="next">Next</button>
+      </div>
+    </main>
     <script src="main.js"></script>
   </body>
 </html>
