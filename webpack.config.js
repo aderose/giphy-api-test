@@ -16,7 +16,10 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [['@babel/preset-env', { targets: 'defaults' }]],
-            plugins: ['@babel/plugin-proposal-class-properties'],
+            plugins: [
+              '@babel/plugin-proposal-class-properties',
+              '@babel/transform-runtime',
+            ],
           },
         },
       },

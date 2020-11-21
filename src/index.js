@@ -5,35 +5,26 @@ import config from './config';
   let gifs = [];
 
   // get gifs from giphy using the provided keyword
-  function fetchGifs(keyword) {
-    return fetch(
+  async function fetchGifs(keyword) {
+    const response = await fetch(
       `https://api.giphy.com/v1/gifs/search?api_key=${config.API_KEY}&q=${keyword}`
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((response) => {
-        return response.data;
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    );
+    const responseData = await response.json();
+    return responseData.data;
   }
 
   // load a new array of gifs
-  function getNewGifs(keyword) {
-    fetchGifs(keyword).then((data) => {
-      gifs = data;
-      counter = 0;
-      doc.querySelector('img').src = gifs[counter].images.original.url;
-    });
+  async function getNewGifs(keyword) {
+    gifs = await fetchGifs(keyword);
+    counter = 0;
+    doc.querySelector('img').src = gifs[counter].images.original.url;
   }
 
   // listen for a form submit
   doc.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
-    let keyword = doc.querySelector('#search').value;
-    if (keyword === '') keyword = 'random';
+    const keyword = doc.querySelector('#search').value;
+    if (keyword === '') return;
     getNewGifs(keyword);
   });
 
