@@ -15,7 +15,11 @@ import config from './config';
 
   // load a new array of gifs
   async function getNewGifs(keyword) {
-    gifs = await fetchGifs(keyword);
+    try {
+      gifs = await fetchGifs(keyword);
+    } catch (err) {
+      console.log(err.message);
+    }
     counter = 0;
     doc.querySelector('img').src = gifs[counter].images.original.url;
   }
